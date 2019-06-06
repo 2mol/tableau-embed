@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fuck yeah, Tableau API</title>
+    <!-- <script src="https://YOUR-SERVER/javascripts/api/tableau-2.min.js"></script> -->
+    <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+
+    <script type="text/javascript">
+        var viz, sheet, workbook, activeSheet;
+        var myUrl = "https://public.tableau.com/views/RegionalSampleWorkbook/Flights";
+        var filtername = "Airport Name";
+
+        function initViz() {
+            console.log("Enter function initViz");
+
+            var containerDiv = document.getElementById("vizContainer");
+
+            var url = myUrl;
+
+            var options = {
+                // hideTabs: true,
+                // hideToolbar: true,
+
+                // onFirstInteractive: function () {
+                //     console.log("viz finished loading");
+                //     workbook = viz.getWorkbook();
+                //     activeSheet = workbook.getActiveSheet();
+                // }
+            };
+
+            viz = new tableau.Viz(containerDiv, url, options);
+        };
+
+        // function exportToPDF() {
+        //     viz.showExportPDFDialog();
+        // }
+
+        // function getUnderlyingData() {
+        //     console.log("getUnderlyingData");
+        //     sheet = activeSheet;
+
+        //     options = {
+        //         maxRows: 10,
+        //         ignoreAliases: false,
+        //         ignoreSelection: true,
+        //         ignoreAllColumns: false
+        //     }
+
+        //     sheet.getUnderlyingDataAsync(options).then(function (t) {
+        //         table = t;
+        //         var tgt = document.getElementById("dataTarget");
+        //         tgt.innerHTML = "<h2>hell yeah, data:</h2>" + JSON.stringify(table.getData())
+        //     })
+        // }
+
+        // function filterSingleVal(mySelectedVal) {
+        //     console.log("enter function filterSingleVal");
+
+        //     activeSheet.applyFilterAsync(
+        //         filtername,
+        //         mySelectedVal,
+        //         tableau.FilterUpdateType.REPLACE
+        //     );
+        // }
+    </script>
+</head>
+
+<body onload="initViz();">
+    <h1>YAY \( ﾟヮﾟ)/</h1>
+
+    <!-- <button id="getData" onclick="getUnderlyingData()">Get Data</button>
+    <button id="getPDF" onclick="exportToPDF()">Export to PDF</button> -->
+
+    <br><br>
+
+    <!-- <div class="form-group">
+      <label for="exampleFormControlSelect1">My first filter</label>
+      <select class="form-control" id="changeFilter" onchange="filterSingleVal(value);">
+        <option>LaGuardia</option>
+        <option>Logan International</option>
+        <option>Denver International</option>
+      </select>
+    </div> -->
+
+    <div id="vizContainer"></div>
+    <div id="dataTarget"></div>
+
+</body>
+
+</html>
